@@ -4,6 +4,17 @@ import Article from './Article';
 class Blog extends React.Component{
     constructor(props){
         super(props);
+        this.state = {
+            isPublished: false,
+            order: 1
+        }
+    }
+
+    // 公開状態を反転させる関数
+    togglePublished = () => {
+        this.setState({
+            isPublished: !this.state.isPublished
+        })
     }
 
     render(){
@@ -13,11 +24,12 @@ class Blog extends React.Component{
                 <Article 
                 title={"React"}
                 // order={3}
-                // isPublished={true}
+                isPublished={this.state.isPublished}
+                toggle={()=> this.togglePublished()}
                 // authorName={authorName}
+
                 />
-                <Article title={"JSXの使い方"} />
-                <Article title={"環境構築をしてみよう"} />
+                {/* <Article title={"JSXの使い方"} /> */}
             </>
         )
     }
